@@ -1,0 +1,98 @@
+{
+    "productos": [
+        {
+            "id": 1,
+            "nombre": "Polera Punisher",
+            "tipo": "poleras",
+            "precio": 19.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_928208-MLC46034378207_052021-O.webp",
+            "color": ["Color: Negro"],
+            "tallas": ["Tallas: ","S-", "M-", "L-", "XL"],
+            "stock": 29
+        },
+        {
+            "id": 2,
+            "nombre": "Polera Flash",
+            "tipo": "poleras",
+            "precio": 19.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_949301-MLC54693774613_032023-O.webp",
+            "color": ["Color: Rojo"],
+            "tallas": ["Tallas: ","S-", "M-", "L-", "XL"],
+            "stock": 15
+        },
+        {
+            "id": 3,
+            "nombre": "Polera Dead Pool",
+            "tipo": "poleras",
+            "precio": 19.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_896240-MLC54668082798_032023-O.webp",
+            "color": ["Color: Negro"],
+            "tallas": ["Tallas: ","S-", "M-", "L-", "XL"],
+            "stock": 31
+        },
+        {
+            "id": 4,
+            "nombre": "Polera Marvel",
+            "tipo": "poleras",
+            "precio": 19.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_663684-MLC53291641510_012023-O.webp",
+            "color": ["Color: Negro"],
+            "tallas": ["Tallas: ","S-", "M-", "L-", "XL"],
+            "stock": 22
+        },
+        {
+            "id": 5,
+            "nombre": "Poleron Punisher",
+            "tipo": "polerones",
+            "precio": 49.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_871569-MLC49284165876_032022-O.webp",
+            "color": ["Color: Negro"],
+            "tallas": ["Tallas: ","S-", "M-", "L-", "XL"],
+            "stock": 19
+        },
+        {
+            "id": 6,
+            "nombre": "Poleron Flash",
+            "tipo": "polerones",
+            "precio": 49.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_907472-MLC51873659032_102022-O.webp",
+            "color": ["Color: Rojo"],
+            "tallas": ["Tallas: ","S-", "M-", "L-", "XL"],
+            "stock": 41
+        },
+        {
+            "id": 7,
+            "nombre": "Poleron Marvel",
+            "tipo": "polerones",
+            "precio": 49.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_751009-MLC73090099687_112023-O.webp",
+            "color": ["Color: Negro"],
+            "tallas": ["Tallas: ","S-", "M-", "L-", "XL"],
+            "stock": 15
+        },
+        {
+            "id": 8,
+            "nombre": "Pin Marvel Spiderman",
+            "tipo": "otros",
+            "precio": 9.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_826934-MLC72698314577_112023-O.webp",
+            "stock": 15
+        },
+        {
+            "id": 9,
+            "nombre": "Pin Marverl Dead Pool",
+            "tipo": "otros",
+            "precio": 9.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_739480-MLC32440184163_102019-O.webp",
+            "stock": 22
+        },
+        {
+            "id": 10,
+            "nombre": "Anillo Punisher",
+            "tipo": "otros",
+            "precio": 9.99,
+            "imagen": "https://http2.mlstatic.com/D_NQ_NP_685848-MLC52446423228_112022-O.webp]",
+            "stock": 10
+        }
+    ]
+}

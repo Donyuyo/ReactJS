@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import arrayProductos from '../Json/arrayProductos.json';
-import ItemList from '../ItemList/ItemList';
+import ItemDetail from '../ItemDetail/ItemDetail';
 
-const ItemListContainer = () => {
-    const [items, setItems] = useState([]);
+const ItemDetailContainer = () => {
+    const [item, setItem] = useState({});
     const { id } = useParams();
 
     useEffect(() => {
@@ -12,14 +12,11 @@ const ItemListContainer = () => {
         try {
         const data = await new Promise((resolve) => {
             setTimeout(() => {
-            const filteredItems = id
-                ? arrayProductos.productos.filter((item) => item.tipo === id)
-                : arrayProductos.productos;
-
-            resolve(filteredItems);
-            }, 1500);
+            const productoEncontrado = arrayProductos.productos.find((item) => item.id === parseInt(id));
+            resolve(productoEncontrado);
+            }, 800);
         });
-        setItems(data);
+        setItem(data);
         } catch (error) {
         console.log('Error:', error);
         }
@@ -30,10 +27,10 @@ const ItemListContainer = () => {
     return (
     <div className='container'>
         <div className='row'>
-        <ItemList items={items} />
+        <ItemDetail item={item} />
         </div>
     </div>
     );
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;
