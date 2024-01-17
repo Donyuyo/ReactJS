@@ -22,7 +22,7 @@ const Cart = () => {
       {cart.map((product) => (
         <ItemCart key={product.id} product={product} />
       ))}
-      <p>Total: $ {totalPrice()}</p>
+      <p>Total: $ {cart.reduce((total, product) => total + product.quantity * product.price, 0)}</p>
       <Link to="/checkout">
         <button className="btn btn-success">Finalizar Compra</button>
       </Link>
@@ -31,3 +31,4 @@ const Cart = () => {
 };
 
 export default Cart;
+

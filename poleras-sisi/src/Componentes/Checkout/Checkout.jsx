@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCartContext } from '../Context/CartContext';
-import {getFirestore,collection,addDoc,updateDoc,doc,getDoc,} from 'firebase/firestore';
+import { getFirestore, collection, addDoc, updateDoc, doc, getDoc } from 'firebase/firestore';
 
 const CheckOut = () => {
   const [nombre, setNombre] = useState('');
@@ -10,11 +10,10 @@ const CheckOut = () => {
   const [emailConfirmacion, setEmailConfirmacion] = useState('');
   const [error, setError] = useState('');
   const [ordenId, setOrdenId] = useState('');
-  const [mensaje, setMensaje] = useState('');
 
-  const { cart, totalPrice, removeProduct } = useCartContext();
+  const { cart, totalPrice, removeProduct, clearCart } = useCartContext();
 
-  const manejadorFormulario = (event) => {
+  const manejadorFormulario = async (event) => {
     event.preventDefault();
 
     if (!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
@@ -27,57 +26,46 @@ const CheckOut = () => {
       return;
     }
 
-    const total = totalPrice();
-    const orden = {
-      items: cart.map((producto) => ({
-        id: producto.id,
-        nombre: producto.title,
-        cantidad: producto.quantity,
-      })),
-      total: total,
-      fecha: new Date(),
-      nombre,
-      apellido,
-      telefono,
-      email,
-    };
+    try {
+      const total = totalPrice();
+      const orden = {
+        items: cart.map((producto) => ({
+          id: producto.id,
+          nombre: producto.title,
+          cantidad: producto.quantity,
+        })),
+        total: total,
+        fecha: new Date(),
+        nombre,
+        apellido,
+        telefono,
+        email,
+      };
 
-    Promise.all(
-      orden.items.map(async (productoOrden) => {
-        const db = getFirestore();
-        const productoRef = doc(db, 'products', productoOrden.id);
+      await Promise.all(
+        orden.items.map(async (productoOrden) => {
+          const db = getFirestore();
+          const productoRef = doc(db, 'products', productoOrden.id);
 
-        const productoDoc = await getDoc(productoRef);
-        const stockActual = productoDoc.data().stock;
+          const productoDoc = await getDoc(productoRef);
+          const stockActual = productoDoc.data().stock;
 
-        await updateDoc(productoRef, {
-          stock: stockActual - productoOrden.cantidad,
-        });
-      })
-    )
-      .then(() => {
-        const db = getFirestore();
-        addDoc(collection(db, 'orders'), orden)
-          .then((docRef) => {
-            setOrdenId(docRef.id);
-            removeProduct();
-          })
-          .catch((error) => {
-            console.log('No se pudo crear la orden', error);
-            setError('Error en la orden');
+          await updateDoc(productoRef, {
+            stock: stockActual - productoOrden.cantidad,
           });
-      })
-      .catch((error) => {
-        console.log('No se puede actualizar el stock', error);
-        setError('No se actualizo el stock');
-      });
+        })
+      );
 
-    setNombre('');
-    setApellido('');
-    setTelefono('');
-    setEmail('');
-    setEmailConfirmacion('');
-    setMensaje('');
+      const db = getFirestore();
+      const docRef = await addDoc(collection(db, 'orders'), orden);
+
+      setOrdenId(docRef.id);
+      removeProduct();
+      clearCart();
+    } catch (error) {
+      console.error('Error al procesar la orden', error);
+      setError('Error en la orden');
+    }
   };
 
   return (
@@ -87,9 +75,9 @@ const CheckOut = () => {
         {cart.map((producto) => (
           <div key={producto.id}>
             <p>
-              {''} {producto.nombre} {producto.cantidad}
+              {producto.nombre} - Cantidad: {producto.cantidad}
             </p>
-            <p>{producto.precio}</p>
+            <p>Precio por unidad: {producto.price}</p>
           </div>
         ))}
 
@@ -146,8 +134,7 @@ const CheckOut = () => {
         {error && <p className="text-danger text-center">{error}</p>}
         {ordenId && (
           <p className="text-success fs-4">
-            ¡Gracias por tu compra! Tu número de seguimiento es: <br /> {''}{' '}
-            {ordenId} {''} <br />
+            ¡Gracias por tu compra! Tu número de seguimiento es: <br /> {''} {ordenId} {''} <br />
           </p>
         )}
 

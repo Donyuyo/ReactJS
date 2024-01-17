@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* Espaciado entre la información y los botones */
+    margin-top: 20px; 
   }
   
   .btn-finish-purchase {
@@ -36,7 +36,7 @@
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 10px; /* Espaciado entre los botones */
+    margin-bottom: 10px;
   }
   
   .btn-finish-purchase:hover {
