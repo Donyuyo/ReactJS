@@ -1,0 +1,45 @@
+/* ItemDetail.css */
+.item-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .item-detail-content {
+    text-align: center;
+  }
+  
+  .item-description {
+    font-style: italic;
+  }
+  
+  .item-price {
+    font-weight: bold;
+  }
+  
+  .item-stock {
+    color: #555;
+  }
+  
+  .item-detail-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Espaciado entre la información y los botones */
+  }
+  
+  .btn-finish-purchase {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px; /* Espaciado entre los botones */
+  }
+  
+  .btn-finish-purchase:hover {
+    background-color: #0056b3;
+  }
+  

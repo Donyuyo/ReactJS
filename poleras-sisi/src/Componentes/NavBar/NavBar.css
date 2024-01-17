@@ -1,26 +1,35 @@
-/* NavBar.css */
-.navbar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar {
+  background-color: #343a40; /* Cambia el color de fondo del NavBar */
 }
 
-.navbar-left, .navbar-center, .navbar-right {
-    display: flex;
-    align-items: center;
+.nav-link {
+  color: #ffffff !important; /* Cambia el color del texto de los enlaces */
+  margin-right: 10px; /* Añade un espacio entre los enlaces */
 }
 
-.navbar-center {
-    flex-grow: 1;
-    justify-content: center;
+.nav-link:hover {
+  color: #ffcc00 !important; /* Cambia el color del texto al pasar el ratón por encima */
 }
 
+.navbar-brand {
+  margin-right: 20px; /* Añade un espacio entre el logo y los enlaces */
+}
+
+/* Ajustes para el icono del carrito en el NavBar */
+.cart-widget {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Mueve el icono del carrito al extremo derecho */
+}
+
+/* Ajustes para el diseño del NavBar en dispositivos móviles */
 @media (max-width: 767px) {
-    .navbar-content {
-        flex-direction: column;
-    }
+  .navbar-nav {
+    text-align: center; /* Centra los enlaces en dispositivos móviles */
+    margin-top: 10px; /* Añade un espacio en la parte superior en dispositivos móviles */
+  }
 
-    .navbar-center {
-        margin-top: 10px; /* Espaciado entre logo y enlaces en dispositivos móviles */
-    }
+  .navbar-toggler {
+    border-color: #ffffff; /* Cambia el color del botón del menú en dispositivos móviles */
+  }
 }

@@ -1,25 +1,41 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import CartWidget from '../Cartwidget/CartWidget';
+import CartWidget from '../CartWidget/CartWidget';
 import Logo from '../Logo/Logo';
 import './NavBar.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function NavBar() {
     return (
-        <Navbar bg="dark" data-bs-them="dark">
-            <Container>
-                <Navbar.Brand to="/"><Logo /></Navbar.Brand>
-
-                    <Nav className="me-auto">
-                        <Link to="/" className='pestaña'>Home</Link>
-                        <Link to="/category/poleras" className='pestaña' >Poleras</Link>
-                        <Link to="/category/polerones" className="pestaña" >Polerones</Link>
-                        <Link to="/category/otros" className="pestaña" >Otros</Link>
-                    </Nav>
-                    <Link to="/cart"><CartWidget /></Link>
-            </Container>
+        <Navbar bg="dark" variant="dark" expand="lg">
+        <Container>
+            <NavLink to="/" className="navbar-brand">
+            <Logo />
+            </NavLink>
+            <Navbar.Toggle aria-controls="navbar-nav" />
+            <Navbar.Collapse id="navbar-nav">
+            <Nav className="me-auto">
+                <NavLink  to="/" className="nav-link">
+                Home
+                </NavLink>
+                <NavLink to="/category/poleras" className="nav-link">
+                Poleras
+                </NavLink>
+                <NavLink to="/category/polerones" className="nav-link">
+                Polerones
+                </NavLink>
+                <NavLink to="/category/otros" className="nav-link">
+                Otros
+                </NavLink>
+            </Nav>
+            <NavLink to="/cart">
+                <CartWidget />
+            </NavLink>
+            </Navbar.Collapse>
+        </Container>
         </Navbar>
     );
 }
